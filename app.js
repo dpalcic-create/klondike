@@ -97,7 +97,7 @@ function isWon(){return [0,1,2,3].every(f=>S.p['f'+f].length===13)}
 function checkWin(){if(S.won||!isWon())return;S.won=true;stats.won++;stats.streak++;stats.bestStreak=Math.max(stats.bestStreak,stats.streak);
   const newBest=!stats.best||S.time<stats.best;if(newBest)stats.best=S.time;saveStats();save();
   setTimeout(()=>showWin(newBest),400)}
-function canAuto(){return !S.won&&!S.p.stock.length&&!S.p.waste.length&&[0,1,2,3,4,5,6].every(t=>S.p['t'+t].every(c=>c.up))}
+function canAuto(){return !S.won&&!isWon()&&!S.p.stock.length&&!S.p.waste.length&&[0,1,2,3,4,5,6].every(t=>S.p['t'+t].every(c=>c.up))}
 let autoRunning=false;
 function maybeAuto(){$('bAuto').hidden=!canAuto();if(canAuto()&&!autoRunning)setTimeout(autoComplete,250)}
 function autoComplete(){
@@ -110,7 +110,7 @@ function autoComplete(){
     S.p[best.f].push(S.p[best.k].pop());S.moves++;render();setTimeout(step,70);
   };step();
 }
-function showWin(nb){$('winTxt').textContent=`${S.moves} moves in ${fmt(S.time)}${nb?' — new best time!':''}. Win streak: ${stats.streak}.`;$('win').hidden=false;confetti()}
+function showWin(nb){$('winTxt').textContent=`${S.moves} moves in ${fmt(S.time)}${nb?' — new best time':''}. Win streak: ${stats.streak}.`;$('win').hidden=false;confetti()}
 function hideWin(){$('win').hidden=true}
 function confetti(){const cols=['#f6c343','#e86aa0','#5ec2ff','#fff','#7be07b'];
   for(let i=0;i<70;i++){const d=document.createElement('div');d.className='confetti';d.style.left=Math.random()*100+'vw';d.style.background=cols[i%5];
