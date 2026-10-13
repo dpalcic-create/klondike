@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Zoey Solitaire</title>
+<meta name="theme-color" content="#0b5d3b"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Zoey Solitaire">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png"><link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css"></head><body>
+<header><img src="zoey-face.jpg" alt="" class="face"><h1>Zoey Solitaire</h1>
+<div class="info"><span id="moves">0 moves</span><span id="time">0:00</span></div></header>
+<main id="board" aria-label="Solitaire table"></main>
+<div id="toast" role="status"></div>
+<nav><button id="bNew">New</button><button id="bUndo">Undo</button><button id="bHint">Hint</button><button id="bAuto" hidden>Finish</button><button id="bMenu">⚙︎</button></nav>
+<div id="menu" class="sheet" hidden><div class="panel"><h2>Settings &amp; stats</h2>
+<label class="row">Draw <select id="drawSel"><option value="1">1 card</option><option value="3">3 cards</option></select></label>
+<div id="stats"></div><div class="btns"><button id="bRestart">Restart this deal</button><button id="bReset" class="ghost">Reset stats</button><button id="bClose">Close</button></div></div></div>
+<div id="win" class="sheet" hidden><div class="panel center"><img src="zoey-back.jpg" alt="Zoey" class="winpic"><h2>You won! 🎉</h2><p id="winTxt"></p><button id="bWinNew">Play again</button></div></div>
+<script src="app.js"></script></body></html>
